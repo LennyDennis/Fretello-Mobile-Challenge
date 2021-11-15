@@ -1,6 +1,6 @@
 # Fretello Mobile Solution
 
-Fretello's session mobile solution in Kotlin
+Fretello's session mobile solution step 2.
 
 ### Prerequisites
 
@@ -20,6 +20,6 @@ The project uses MVVM architecture pattern.
 
 
 ## Screenshots
-|<img src="Screenshots/exercises.png" width=200/>|<img src="Screenshots/session.png" width=200/>
+|<img src="Screenshots/group.png" width=200/>|<img src="Screenshots/exer.png" width=200/>
 
 
