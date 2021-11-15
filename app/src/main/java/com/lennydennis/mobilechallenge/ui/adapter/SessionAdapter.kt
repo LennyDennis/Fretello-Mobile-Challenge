@@ -31,8 +31,7 @@ class SessionAdapter(private val sessionList: List<Session>) :
 
     override fun onBindViewHolder(holder: SessionViewHolder, position: Int) {
         val session = sessionList[position]
-        holder.sessionBinding.indexTv.text = (position+1).toString()
-        holder.sessionBinding.sessionCard.setOnClickListener {
+        holder.sessionBinding.exerciseBtn.setOnClickListener {
             sessionClickListener.onSessionClicked(sessionList[position])
         }
         holder.bind(session)
@@ -46,7 +45,6 @@ class SessionAdapter(private val sessionList: List<Session>) :
         RecyclerView.ViewHolder(sessionBinding.root) {
         private val sessionName: TextView = sessionBinding.sessionNameTv
         private val sessionDate: TextView = sessionBinding.sessionDateTv
-        private val exerciseNumber: TextView = sessionBinding.exerciseNoTv
         fun bind(session: Session) {
             val input = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
             val output = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
@@ -59,7 +57,6 @@ class SessionAdapter(private val sessionList: List<Session>) :
             val formatted = output.format(date)
             this.sessionName.text = session.name
             this.sessionDate.text = formatted
-            this.exerciseNumber.text = session.exercises.size.toString()
         }
     }
 }

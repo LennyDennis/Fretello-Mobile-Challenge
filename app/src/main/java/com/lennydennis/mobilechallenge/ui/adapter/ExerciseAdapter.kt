@@ -17,7 +17,7 @@ class ExerciseAdapter(private val exerciseList: List<Exercise>) :
             parent,
             false
         )
-        return ExerciseViewHolder(exerciseLayoutBinding);    }
+        return ExerciseViewHolder(exerciseLayoutBinding); }
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         val exercise = exerciseList[position]
@@ -30,11 +30,9 @@ class ExerciseAdapter(private val exerciseList: List<Exercise>) :
 
     inner class ExerciseViewHolder(val exerciseBinding: ExerciseItemBinding) :
         RecyclerView.ViewHolder(exerciseBinding.root) {
-        private val id: TextView = exerciseBinding.idTv
         private val exerciseName: TextView = exerciseBinding.exerciserNameTv
         private val bpmPlayed: TextView = exerciseBinding.bpmTv
         fun bind(exercise: Exercise) {
-            this.id.text = exercise.exerciseId
             this.exerciseName.text = exercise.name
             this.bpmPlayed.text = exercise.practicedAtBpm.toString()
         }

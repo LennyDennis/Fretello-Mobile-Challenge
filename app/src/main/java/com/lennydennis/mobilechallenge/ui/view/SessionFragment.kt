@@ -36,13 +36,14 @@ class SessionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).setToolbarTitle("Sessions")
+        (activity as MainActivity).setToolbarTitle("Exercise Groups")
         sessionViewModel.getSessions()
         binding.progressBar.visibility = View.VISIBLE
-        sessionViewModel.sessionResponse.observe(viewLifecycleOwner) {
-            when (it) {
+        sessionViewModel.sessionResponse.observe(viewLifecycleOwner) { result ->
+            when (result) {
                 is NetworkResult.Success -> {
-                    session = it.data
+                    result.data.sortByDescending { it.practicedOnDate }
+                    session = result.data
                     setUpRecyclerView(session)
                 }
                 is NetworkResult.Error -> {
