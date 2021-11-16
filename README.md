@@ -1,11 +1,11 @@
 # Fretello Mobile Solution
 
-Fretello's session mobile solution step 2.
+Fretello's session mobile solution step 3.
 
 ### Prerequisites
 
 The project has all required dependencies in the gradle files.
-Add the Project to Android Studio or Intelij and build.all the required dependencies will be downloaded and installed.
+Add the Project to Android Studio or Intellij and build.all the required dependencies will be downloaded and installed.
 
 ## Architecture
 
@@ -20,6 +20,6 @@ The project uses MVVM architecture pattern.
 
 
 ## Screenshots
-|<img src="Screenshots/group.png" width=200/>|<img src="Screenshots/exer.png" width=200/>
+|<img src="Screenshots/step3.png" width=200/>
 
 
