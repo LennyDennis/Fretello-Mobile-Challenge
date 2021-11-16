@@ -5,15 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lennydennis.mobilechallenge.R
+import com.lennydennis.mobilechallenge.data.models.Exercise
 import com.lennydennis.mobilechallenge.data.models.Session
 import com.lennydennis.mobilechallenge.databinding.FragmentSessionBinding
-import com.lennydennis.mobilechallenge.ui.adapter.SessionAdapter
+import com.lennydennis.mobilechallenge.ui.adapter.ExerciseAdapter
 import com.lennydennis.mobilechallenge.util.NetworkResult
 import com.lennydennis.mobilechallenge.viewmodel.SessionViewModel
 
@@ -36,7 +34,7 @@ class SessionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).setToolbarTitle("Exercise Groups")
+        (activity as MainActivity).setToolbarTitle("Exercises")
         sessionViewModel.getSessions()
         binding.progressBar.visibility = View.VISIBLE
         sessionViewModel.sessionResponse.observe(viewLifecycleOwner) { result ->
@@ -56,15 +54,12 @@ class SessionFragment : Fragment() {
 
     private fun setUpRecyclerView(sessionList: List<Session>) {
         binding.progressBar.visibility = View.GONE
-        val sessionListAdapter = SessionAdapter(sessionList)
-        binding.sessionRv.layoutManager = LinearLayoutManager(context)
-        binding.sessionRv.adapter = sessionListAdapter
-
-        sessionListAdapter.sessionClickListener = object : SessionAdapter.SessionClickListener {
-            override fun onSessionClicked(session: Session) {
-                val session = SessionFragmentDirections.actionSessionFragmentToExerciseFragment(session)
-                findNavController().navigate(session)
-            }
+        val exerciseList = ArrayList<Exercise>()
+        sessionList.forEach {
+            exerciseList.addAll(it.exercises)
         }
+        val exerciseListAdapter = context?.let { ExerciseAdapter(exerciseList, it) }
+        binding.exerciseRv.layoutManager = LinearLayoutManager(context)
+        binding.exerciseRv.adapter = exerciseListAdapter
     }
 }

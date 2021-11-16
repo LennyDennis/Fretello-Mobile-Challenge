@@ -10,18 +10,5 @@
         android:name="com.lennydennis.mobilechallenge.ui.view.SessionFragment"
         android:label="fragment_session"
         tools:layout="@layout/fragment_session">
-        <action
-            android:id="@+id/action_sessionFragment_to_exerciseFragment"
-            app:destination="@id/exerciseFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/exerciseFragment"
-        android:name="com.lennydennis.mobilechallenge.ui.view.ExerciseFragment"
-        android:label="fragment_exercise"
-        tools:layout="@layout/fragment_exercise">
-        <argument
-            android:name="session"
-            app:argType="com.lennydennis.mobilechallenge.data.models.Session"
-            app:nullable="true" />
     </fragment>
 </navigation>
